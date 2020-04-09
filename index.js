@@ -1,5 +1,5 @@
 const api = require("./utils/api");
-const api = require("./utils/generateMarkdown");
+const generateMarkdown = require("./utils/generateMarkdown");
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
@@ -80,9 +80,12 @@ function promptUser() {
 
 promptUser()
     .then(function (answers) {
-        const md = generateMarkdown(answers);
+        return api.getUser(answers.username).then(function(response) {
+            const md = generateMarkdown(answers, response);
+    
+            return writeFileAsync("README.md", md);
+        })
 
-        return writeFileAsync("README.md", md);
     })
     .then(function () {
         console.log("file generated");
@@ -91,7 +94,7 @@ promptUser()
         console.log(err);
     })
 
-api.getUser();
+
 
 // function writeToFile(fileName, data) {
 //     inquirer.prompt(questions)

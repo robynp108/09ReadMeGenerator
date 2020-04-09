@@ -1,4 +1,4 @@
-function generateMarkdown(answers) {
+function generateMarkdown(answers, response) {
   return `
   # ${answers.title}
 
