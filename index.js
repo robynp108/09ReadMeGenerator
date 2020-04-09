@@ -1,4 +1,5 @@
 const api = require("./utils/api");
+const api = require("./utils/generateMarkdown");
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
@@ -10,16 +11,6 @@ const questions = [
         type: "input",
         message: "Enter your GitHub username:",
         name: "username"
-    },
-    {
-        type: "checkbox",
-        name: "badge",
-        message: "Would you like a badge?",
-        choices: [
-            "Javascript 100%",
-            "Non-GMO",
-            "Gluten Free"
-        ]
     },
     {
         type: "input",
@@ -39,7 +30,10 @@ const questions = [
             "* [Installation](#installation)",
             "* [Usage](#usage)",
             "* [Credits](#credits)",
-            "* [License](#license)"
+            "* [License](#license)",
+            "* [Badges](#badges)",
+            "* [Tests](#tests)",
+            "* [Questions](#questions)"
         ]
     },
     {
@@ -54,14 +48,25 @@ const questions = [
     },
     {
         type: "input",
+        name: "credits",
+        message: "Are there any collaborators?"
+    },
+    {
+        type: "input",
         name: "license",
         message: "How is the project licenced?"
     },
     {
-        type: "input",
-        name: "contributing",
-        message: "Are there any contributers?"
+        type: "checkbox",
+        name: "badges",
+        message: "Would you like any badges?",
+        choices: [
+            "Javascript 100%",
+            "Non-GMO",
+            "Gluten Free"
+        ]
     },
+    
     {
         type: "input",
         name: "tests",
@@ -74,17 +79,19 @@ function promptUser() {
 }
 
 promptUser()
-    .then(function(answers) {
+    .then(function (answers) {
         const md = generateMarkdown(answers);
 
         return writeFileAsync("README.md", md);
     })
-    .then(function() {
+    .then(function () {
         console.log("file generated");
     })
-    .catch(function(err) {
+    .catch(function (err) {
         console.log(err);
     })
+
+api.getUser();
 
 // function writeToFile(fileName, data) {
 //     inquirer.prompt(questions)
@@ -105,17 +112,12 @@ promptUser()
 
 // }
 
-function init(userData) {
-    //to get the data we want from object
-    console.log(userData);
-    api.getUser().then(function (res) {
-        //make one variable of object with username, image, email.  Then return variable.
-        const image = res.data.avatar_url;
-        const email = res.data.email;
-        
-    });
+// function init(userData) {
+//     //to get the data we want from object
+//     console.log(userData);
+//     api.getUser();
 
-}
+// }
 
 
 // writeToFile();

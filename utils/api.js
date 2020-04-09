@@ -6,11 +6,11 @@ const api = {
         const queryUrl = `https://api.github.com/users/${username}`;
 
         return axios.get(queryUrl)
-        // .then(function (res) {
-        //   const image = res.data.avatar_url;
-        //   const email = res.data.email;
-
-        // });
+        .then(function (response) {
+          // const image = response.data.avatar_url;
+          // const email = response.data.email;
+          return response;
+        });
   }
 }
 

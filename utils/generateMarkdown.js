@@ -1,41 +1,34 @@
 function generateMarkdown(answers) {
   return `
-  # Title
+  # ${answers.title}
 
   ## Description
-  Description text
+  ${answers.description}
 
   ## Table of Contents
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Credits](#credits)
-  * [License](#license)
-  * [Tests](#tests)
-  * [Questions](#questions)
+  ${answers.contents}
 
   ### Installation
-  Installation text
-  Deployed URL
+  ${answers.installation}
 
   ### Usage
-  Usage text
-  Screenshots
+  ${answers.usage}
 
   ### Credits
-  List of contributers
+  ${answers.credits}
 
   ### License 
-  License name
+  ${answers.license}
 
   ### Badges
-  Apply any badges
+  ${answers.badges}
 
   ### Tests
-  Describe tests
+  ${answers.tests}
 
   ### Questions
-  GitHub profile images
-  GitHub email
+  ${response.data.avatar_url}
+  ${response.data.email}
 
 `;
 }
