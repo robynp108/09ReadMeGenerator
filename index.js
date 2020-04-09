@@ -1,5 +1,9 @@
 const api = require("./utils/api");
 const inquirer = require("inquirer");
+const fs = require("fs");
+const util = require("util");
+
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const questions = [
     {
@@ -65,24 +69,41 @@ const questions = [
     },
 ];
 
-function writeToFile(fileName, data) {
-    inquirer.prompt(questions)
-        .then(function (data) {
-            //.then
-            init(data);
-            fileName = "README.md";
-
-            fs.writeFile(fileName, JSON.stringify(data, null, '\t'), function (err) {
-
-                if (err) {
-                    return console.log(err);
-                }
-
-
-            });
-        });
-
+function promptUser() {
+    return inquirer.prompt(questions);
 }
+
+promptUser()
+    .then(function(answers) {
+        const md = generateMarkdown(answers);
+
+        return writeFileAsync("README.md", md);
+    })
+    .then(function() {
+        console.log("file generated");
+    })
+    .catch(function(err) {
+        console.log(err);
+    })
+
+// function writeToFile(fileName, data) {
+//     inquirer.prompt(questions)
+//         .then(function (data) {
+//             //.then
+//             init(data);
+//             fileName = "README.md";
+
+//             fs.writeFile(fileName, JSON.stringify(data, null, '\t'), function (err) {
+
+//                 if (err) {
+//                     return console.log(err);
+//                 }
+
+
+//             });
+//         });
+
+// }
 
 function init(userData) {
     //to get the data we want from object
@@ -97,4 +118,4 @@ function init(userData) {
 }
 
 
-writeToFile();
+// writeToFile();
