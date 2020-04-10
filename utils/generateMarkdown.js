@@ -27,7 +27,7 @@ function generateMarkdown(answers, response) {
   ${answers.tests}
 
   ### Questions
-  ![GitHub profile image](${response.data.avatar_url})\n
+  ![GitHub profile image](${response.data.avatar_url}=100x100)\n
   email= ${response.data.email}
 
 `;
