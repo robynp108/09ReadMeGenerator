@@ -57,16 +57,15 @@ const questions = [
         message: "How is the project licenced?"
     },
     {
-        type: "checkbox",
-        name: "badges",
-        message: "Would you like any badges?",
+        type: "list",
+        name: "badge",
+        message: "Would you like a badge?",
         choices: [
-            "Javascript 100%",
-            "Non-GMO",
-            "Gluten Free"
+            "https://img.shields.io/badge/javascript-100%-blue.svg",
+            "https://img.shields.io/badge/gluten-free-blue.svg",
         ]
     },
-    
+
     {
         type: "input",
         name: "tests",
@@ -80,9 +79,9 @@ function promptUser() {
 
 promptUser()
     .then(function (answers) {
-        return api.getUser(answers.username).then(function(response) {
+        return api.getUser(answers.username).then(function (response) {
             const md = generateMarkdown(answers, response);
-    
+
             return writeFileAsync("README.md", md);
         })
 
@@ -93,34 +92,3 @@ promptUser()
     .catch(function (err) {
         console.log(err);
     })
-
-
-
-// function writeToFile(fileName, data) {
-//     inquirer.prompt(questions)
-//         .then(function (data) {
-//             //.then
-//             init(data);
-//             fileName = "README.md";
-
-//             fs.writeFile(fileName, JSON.stringify(data, null, '\t'), function (err) {
-
-//                 if (err) {
-//                     return console.log(err);
-//                 }
-
-
-//             });
-//         });
-
-// }
-
-// function init(userData) {
-//     //to get the data we want from object
-//     console.log(userData);
-//     api.getUser();
-
-// }
-
-
-// writeToFile();

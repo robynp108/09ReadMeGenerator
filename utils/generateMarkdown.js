@@ -6,7 +6,7 @@ function generateMarkdown(answers, response) {
   ${answers.description}
 
   ## Table of Contents
-  ${answers.contents}
+  ${answers.contents.join("\n")}
 
   ### Installation
   ${answers.installation}
@@ -20,15 +20,15 @@ function generateMarkdown(answers, response) {
   ### License 
   ${answers.license}
 
-  ### Badges
-  ${answers.badges}
+  ### Badge
+  ![badge](${answers.badge})
 
   ### Tests
   ${answers.tests}
 
   ### Questions
-  ${response.data.avatar_url}
-  ${response.data.email}
+  ![GitHub profile image](${response.data.avatar_url})\n
+  email= ${response.data.email}
 
 `;
 }

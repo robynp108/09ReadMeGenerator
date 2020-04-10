@@ -3,14 +3,12 @@ const axios = require("axios");
 
 const api = {
   getUser(username) {
-        const queryUrl = `https://api.github.com/users/${username}`;
+    const queryUrl = `https://api.github.com/users/${username}`;
 
-        return axios.get(queryUrl)
-        .then(function (response) {
-          // const image = response.data.avatar_url;
-          // const email = response.data.email;
-          return response;
-        });
+    return axios.get(queryUrl)
+      .then(function (response) {
+        return response;
+      });
   }
 }
 
