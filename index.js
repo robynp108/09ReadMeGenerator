@@ -61,8 +61,8 @@ const questions = [
         name: "badge",
         message: "Would you like a badge?",
         choices: [
-            "https://img.shields.io/badge/javascript-100%-blue.svg",
-            "https://img.shields.io/badge/gluten-free-blue.svg",
+            "https://img.shields.io/badge/javascript-100%25-blue",
+            "https://img.shields.io/badge/gluten-free-green",
         ]
     },
 

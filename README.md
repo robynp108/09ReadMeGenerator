@@ -23,7 +23,7 @@
   No license
 
   ### Badge
-  ![badge](https://img.shields.io/badge/javascript-100%-blue.svg)
+  ![badge](https://img.shields.io/badge/javascript-100%25-blue)
 
   ### Tests
   Manually tested
