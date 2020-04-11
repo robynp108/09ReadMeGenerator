@@ -2,6 +2,8 @@ function generateMarkdown(answers, response) {
   return `
   # ${answers.title}
 
+  ![badge](${answers.badge})
+
   ## Description
   ${answers.description}
 
@@ -18,10 +20,7 @@ function generateMarkdown(answers, response) {
   ${answers.credits}
 
   ### License 
-  ${answers.license}
-
-  ### Badge
-  ![badge](${answers.badge})
+  ${answers.license} 
 
   ### Tests
   ${answers.tests}
