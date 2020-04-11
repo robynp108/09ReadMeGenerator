@@ -1,5 +1,7 @@
 
   # ReadMe Generator
+  
+  ![badge](https://img.shields.io/badge/javascript-100%25-blue)
 
   ## Description
   This project is a simple command line script using node.js to generate a good ReadMe markdown file based on prompted questions.
@@ -21,9 +23,6 @@
 
   ### License 
   No license
-
-  ### Badge
-  ![badge](https://img.shields.io/badge/javascript-100%25-blue)
 
   ### Tests
   Manually tested
